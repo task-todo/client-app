@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded',async()=>{
 })
 function btnpress(){
     email = document.getElementById("emailinp").value;
-    password = document.getElementById("passwordinp").value;
-    passwordagain = document.getElementById("passwordinpagain").value;
+    password = document.getElementById("passwordinp").value.trim();
+    passwordagain = document.getElementById("passwordinpagain").value.trim();
     if(password != passwordagain){
         //show invalid email or password
         alert("Passwords do not match");
@@ -18,6 +18,10 @@ function btnpress(){
         alert("Invalid email or password");
         return;
     }
+    if(password.trim().length<6){
+        alert("Password must be minimum 6 characters long");
+        return;
+    }
     //send to server at localhost:8080/login
     fetch(URI+"/signup", {
         method: "POST",
@@ -26,7 +30,7 @@ function btnpress(){
     })
     .then(res => res.json())
     .then(data => {
-        if(data.message == "User already exists"){
+        if(data.message == "Username already taken"){
             alert("User already exists");
             return;
         }
@@ -34,7 +38,7 @@ function btnpress(){
         window.Login.sendLoginSuccess(data.token);
         } else {
         window.Login.sendLoginFailed();
-        alert("Incorrect email or password");
+        alert("Password must be minimum 6 characters long");
         }
     })
     .catch(() => {
