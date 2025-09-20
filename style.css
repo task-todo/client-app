@@ -155,10 +155,11 @@ body {
     margin-right: auto;
 }
 
-#logout{
+#login{
     padding: 1%;
     padding-bottom: 2%;
+    background: chartreuse;
 }
-#logout:active{
-    background-color: #555;
+#login:active{
+    background-color: rgb(70, 138, 0);
 }

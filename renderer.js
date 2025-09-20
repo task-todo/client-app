@@ -19,6 +19,9 @@ window.Login.onLoginSuccess((event,data)=>{
     for(var donetasks in tasklist.comptasks){
         addnewtask(null,id=donetasks, data=tasklist['comptasks'][donetasks],done=true);
     }
+    logbtn = document.getElementById("login");
+    logbtn.innerText = "Logout";
+    logbtn.style.backgroundColor = "crimson";
 })
 
 function addnewtask(empty,id,data,done){

@@ -22,8 +22,13 @@ window.onload = async ()=>{
             window.onstart.setURL(document.getElementById('serverIP').value)
         }
     });
-    document.getElementById('logout').addEventListener('click',()=>{
+    document.getElementById('login').addEventListener('click',()=>{
+        logbtn = document.getElementById("login");
         window.onstart.logout();
+        if(logbtn.innerText=="Logout"){
+            logbtn.innerText = "Login";
+            logbtn.style.backgroundColor = "chartreuse";
+        }
     })
     // try to load images in a folder
     images = await window.onstart.getImg();
